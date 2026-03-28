@@ -7,8 +7,6 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
-    env:
-      GPT_TOKEN: ${{ secrets.GPT_TOKEN }}
     steps:
       - uses: actions/checkout@v4
 
@@ -18,13 +16,13 @@ jobs:
           distribution: 'temurin'
 
       - name: Inject token cornell
-        run: sed -i "s|var githubToken: String = \".*\"|var githubToken: String = \"$GPT_TOKEN\"|" cornell_project/app/src/main/java/com/example/cornell/api/GptRepository.kt
+        run: sed -i "s|var githubToken: String = \".*\"|var githubToken: String = \"${{ secrets.GPT_TOKEN }}\"|" cornell_project/app/src/main/java/com/example/cornell/api/GptRepository.kt
 
       - name: Inject token resolvedor
-        run: echo "$GPT_TOKEN" > resolvedor_fix/app/src/main/assets/github_token.txt
+        run: echo "${{ secrets.GPT_TOKEN }}" > resolvedor_fix/app/src/main/assets/github_token.txt
 
       - name: Inject token imagenes
-        run: echo "$GPT_TOKEN" > imagenes_fix/app/src/main/assets/github_token.txt
+        run: echo "${{ secrets.GPT_TOKEN }}" > imagenes_fix/app/src/main/assets/github_token.txt
 
       - name: Build cornell_project
         run: cd cornell_project && chmod +x gradlew && ./gradlew assembleDebug
