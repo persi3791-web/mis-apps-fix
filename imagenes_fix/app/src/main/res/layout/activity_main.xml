@@ -1,0 +1,194 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="#121212"
+    android:padding="16dp">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="FLASHCARDS IA PRO v4"
+        android:textColor="#FFFFFF"
+        android:textSize="20sp"
+        android:textStyle="bold" />
+
+    <EditText
+        android:id="@+id/etInputText"
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        android:layout_marginTop="10dp"
+        android:background="#2C2C2C"
+        android:gravity="top|start"
+        android:hint="Tema, texto o resumen..."
+        android:textColor="#FFFFFF"
+        android:textColorHint="#888888"
+        android:padding="8dp" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="10dp"
+        android:gravity="center_vertical">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Cant:"
+            android:textColor="#BBB"/>
+
+        <EditText
+            android:id="@+id/etCount"
+            android:layout_width="50dp"
+            android:layout_height="wrap_content"
+            android:text="10"
+            android:inputType="number"
+            android:textColor="#FFFFFF"
+            android:background="#333"
+            android:gravity="center"
+            android:layout_marginStart="5dp"/>
+
+        <Button
+            android:id="@+id/btnAiCreate"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="CREAR DESDE CERO (IA)"
+            android:backgroundTint="#E67E22"
+            android:textStyle="bold"
+            android:layout_marginStart="10dp"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="5dp">
+
+        <Button
+            android:id="@+id/btnUpload"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:text="1. SUBIR TABLA"
+            android:backgroundTint="#3498DB"/>
+
+        <Button
+            android:id="@+id/btnClear"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="BORRAR"
+            android:backgroundTint="#C0392B"
+            android:layout_marginStart="5dp"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="10dp">
+
+        <TextView
+            android:id="@+id/headerQ"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:text="PREGUNTA"
+            android:padding="10dp"
+            android:background="#000000"
+            android:textColor="#FFF"
+            android:gravity="center"
+            android:textStyle="bold"/>
+        
+        <View android:layout_width="1dp" android:layout_height="match_parent" android:background="#555"/>
+
+        <TextView
+            android:id="@+id/headerA"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:text="RESPUESTA"
+            android:padding="10dp"
+            android:background="#000000"
+            android:textColor="#FFF"
+            android:gravity="center"
+            android:textStyle="bold"/>
+
+        <View android:layout_width="1dp" android:layout_height="match_parent" android:background="#555"/>
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_weight="0.8"
+            android:layout_height="wrap_content"
+            android:text="IMG"
+            android:padding="10dp"
+            android:background="#000000"
+            android:textColor="#FFF"
+            android:gravity="center"
+            android:textStyle="bold"/>
+    </LinearLayout>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerView"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:background="#1E1E1E"/>
+
+    <Button
+        android:id="@+id/btnGenImages"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="2. GENERAR 3ª COLUMNA"
+        android:backgroundTint="#7F8C8D"
+        android:textStyle="bold"
+        android:layout_marginTop="5dp"/>
+
+    <Button
+        android:id="@+id/btnModelToggle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Modelo: Gemini 2.0"
+        android:textColor="#FFFFFF"
+        android:layout_marginBottom="5dp"/>
+
+    <Button
+        android:id="@+id/btnSettings"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="⚙️ Ajustes carpeta"
+        android:backgroundTint="#333333"
+        android:textColor="#FFFFFF"
+        android:layout_marginBottom="5dp"/>
+
+    <Button
+        android:id="@+id/btnExport"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="EXPORTAR CSV (PARA ANKI)"
+        android:backgroundTint="#27AE60"
+        android:textStyle="bold"/>
+
+    <ProgressBar
+        android:id="@+id/progressBar"
+        style="?android:attr/progressBarStyleHorizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:progress="0"
+        android:max="100"/>
+
+    <TextView
+        android:id="@+id/tvLog"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:background="#000000"
+        android:textColor="#7CFC00"
+        android:textSize="11sp"
+        android:padding="4dp"
+        android:text="Sistema listo..."
+        android:fontFamily="monospace"
+        android:scrollbars="vertical"/>
+</LinearLayout>
+
+

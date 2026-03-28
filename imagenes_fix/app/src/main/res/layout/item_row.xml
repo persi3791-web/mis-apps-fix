@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:background="#1E1E1E"
+    android:padding="1dp">
+
+    <EditText
+        android:id="@+id/rowQ"
+        android:layout_width="0dp"
+        android:layout_weight="1"
+        android:layout_height="wrap_content"
+        android:background="@null"
+        android:textColor="#FFFFFF"
+        android:textSize="13sp"
+        android:padding="8dp"
+        android:hint="Pregunta"/>
+
+    <View android:layout_width="1dp" android:layout_height="match_parent" android:background="#444"/>
+
+    <EditText
+        android:id="@+id/rowA"
+        android:layout_width="0dp"
+        android:layout_weight="1"
+        android:layout_height="wrap_content"
+        android:background="@null"
+        android:textColor="#FFFFFF"
+        android:textSize="13sp"
+        android:padding="8dp"
+        android:hint="Respuesta"/>
+
+    <View android:layout_width="1dp" android:layout_height="match_parent" android:background="#444"/>
+
+    <TextView
+        android:id="@+id/rowImg"
+        android:layout_width="0dp"
+        android:layout_weight="0.8"
+        android:layout_height="wrap_content"
+        android:textColor="#AAAAAA"
+        android:textSize="10sp"
+        android:padding="8dp"
+        android:text="PENDIENTE"/>
+</LinearLayout>
+
+
