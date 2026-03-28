@@ -22,6 +22,7 @@ jobs:
           sed -i "s|var githubToken: String = \".*\"|var githubToken: String = \"${GPT_TOKEN}\"|" cornell_project/app/src/main/java/com/example/cornell/api/GptRepository.kt
           echo "${GPT_TOKEN}" > resolvedor_fix/app/src/main/assets/github_token.txt
           echo "${GPT_TOKEN}" > imagenes_fix/app/src/main/assets/github_token.txt
+          echo "${GPT_TOKEN}" > mathsnip/app/src/main/assets/gpt_token.txt
 
       - name: Build cornell_project
         run: cd cornell_project && chmod +x gradlew && ./gradlew assembleDebug
@@ -32,6 +33,9 @@ jobs:
       - name: Build imagenes_fix
         run: cd imagenes_fix && chmod +x gradlew && ./gradlew assembleDebug
 
+      - name: Build mathsnip
+        run: cd mathsnip && chmod +x gradlew && ./gradlew assembleDebug
+
       - name: Upload APKs
         uses: actions/upload-artifact@v4
         with:
@@ -40,3 +44,4 @@ jobs:
             cornell_project/app/build/outputs/apk/debug/app-debug.apk
             resolvedor_fix/app/build/outputs/apk/debug/app-debug.apk
             imagenes_fix/app/build/outputs/apk/debug/app-debug.apk
+            mathsnip/app/build/outputs/apk/debug/app-debug.apk
