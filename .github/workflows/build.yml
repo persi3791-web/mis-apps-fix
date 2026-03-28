@@ -15,14 +15,13 @@ jobs:
           java-version: '17'
           distribution: 'temurin'
 
-      - name: Inject token cornell
-        run: sed -i "s|var githubToken: String = \".*\"|var githubToken: String = \"${{ secrets.GPT_TOKEN }}\"|" cornell_project/app/src/main/java/com/example/cornell/api/GptRepository.kt
-
-      - name: Inject token resolvedor
-        run: echo "${{ secrets.GPT_TOKEN }}" > resolvedor_fix/app/src/main/assets/github_token.txt
-
-      - name: Inject token imagenes
-        run: echo "${{ secrets.GPT_TOKEN }}" > imagenes_fix/app/src/main/assets/github_token.txt
+      - name: Inject tokens
+        env:
+          GPT_TOKEN: ${{ secrets.GPT_TOKEN }}
+        run: |
+          sed -i "s|var githubToken: String = \".*\"|var githubToken: String = \"${GPT_TOKEN}\"|" cornell_project/app/src/main/java/com/example/cornell/api/GptRepository.kt
+          echo "${GPT_TOKEN}" > resolvedor_fix/app/src/main/assets/github_token.txt
+          echo "${GPT_TOKEN}" > imagenes_fix/app/src/main/assets/github_token.txt
 
       - name: Build cornell_project
         run: cd cornell_project && chmod +x gradlew && ./gradlew assembleDebug
